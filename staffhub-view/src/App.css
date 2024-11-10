@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+body{
+
+  background:linear-gradient(rgba(57, 40, 2, 0.5), rgba(55, 35, 1, 0.5));
+color:white;
+}
+
+
+.background{
+  position: relative;
+  left:10vw;
+  top:10vh;
+  background: linear-gradient(rgba(163, 142, 142, 0.5), rgba(156, 131, 131, 0.5)), url('./image/main_image.png');
+  background-position:center;
+  background-size: cover;
+  width:75vmax;
+  height: 65vmax;
+  color:white;
+}
