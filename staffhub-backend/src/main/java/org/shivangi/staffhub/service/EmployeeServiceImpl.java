@@ -1,9 +1,9 @@
 package org.shivangi.staffhub.service;
 import java.util.*;
 
-import org.shivangi.staffhub.model.Employee;
+import org.shivangi.staffhub.entities.Employee;
+import org.shivangi.staffhub.entities.EmployeeEntity;
 import org.shivangi.staffhub.repository.EmployeeRepository;
-import org.shivangi.staffhub.model.EmployeeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.BeanUtils;
@@ -36,7 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             emp.setPhone(employeeEntity.getPhone());
 
             // now add the object emp to the model employee (DTO)
-            employees.add(emp);
+            employees.add(emp); 
         }
 
         return employees;

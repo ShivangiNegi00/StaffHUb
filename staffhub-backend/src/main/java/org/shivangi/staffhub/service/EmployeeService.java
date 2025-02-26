@@ -2,7 +2,7 @@ package org.shivangi.staffhub.service;
 
 import java.util.List;
 
-import org.shivangi.staffhub.model.Employee;
+import org.shivangi.staffhub.entities.Employee;
 
 public interface EmployeeService {
      String createEmployee(Employee employee);

@@ -3,8 +3,8 @@ package org.shivangi.staffhub.controller;
 // import java.util.ArrayList;
 import java.util.List;
 
+import org.shivangi.staffhub.entities.Employee;
 import org.shivangi.staffhub.service.EmployeeService;
-import org.shivangi.staffhub.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;

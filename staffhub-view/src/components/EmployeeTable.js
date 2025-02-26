@@ -16,7 +16,7 @@ const EmployeeTable = () => {
       catch(error){
         console.log(error);
       }
-      setLoading(false)
+        setLoading(false)
 
     };
      fetchData();

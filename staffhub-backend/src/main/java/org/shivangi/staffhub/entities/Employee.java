@@ -1,4 +1,4 @@
-package org.shivangi.staffhub.model;
+package org.shivangi.staffhub.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,27 +1,26 @@
 import "./App.css";
-import AddEmployee from "./components/AddEmployee";
-import EmployeeTable from "./components/EmployeeTable";
-import Navbar from "./components/Navbar";
-import{BrowserRouter,Routes,Route} from "react-router-dom";
-import UpdateEmployee from "./components/UpdateEmployee";
 
+import{BrowserRouter as Router ,Routes,Route,Navigate} from "react-router-dom";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import TaskDashboard from "./components/TaskPage/TaskDashboard";
+
+const ProtectedRoute =({element,Component, ...rest}) => {
+  const isAuthenticated = !!localStorage.getItem("token");
+
+  return isAuthenticated ? <Component {...rest} /> : <Navigate to="/Login" />;
+};
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      
-      <div className="background relative ">
-        <Routes>
-          <Route index element= { <EmployeeTable/>}/>
-          <Route path="/" element={<EmployeeTable/>}/>
-           <Route path="/addEmployee" element={<AddEmployee/>}/>
-           <Route path="/editEmployee/:id" element={<UpdateEmployee/>}/>
+<Router>
+<Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/TaskDashboard" element={<ProtectedRoute Component={TaskDashboard} />} />
+      </Routes>
+        </Router>
 
-        </Routes>
-       
-      </div>
-    </BrowserRouter>
   );
 }
 
