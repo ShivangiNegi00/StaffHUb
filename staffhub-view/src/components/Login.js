@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import Navbar from './Navbar';
 import { useNavigate } from "react-router-dom";
 // import {TaskDashboard} from './TaskDashboard';
+import MainDashboard from './TaskPage/MainDashboard';
 
 const Login = () => {
     const [email, setUsername] = useState("");
@@ -29,7 +30,7 @@ const Login = () => {
           // console.log(data.token);
           // console.log(data.userId);
             // alert("Login successful!");
-          navigate("/TaskDashboard");
+          navigate("/MainDashboard");
           // console.log(data); // Handle successful login (e.g., save token)
 
         } else {

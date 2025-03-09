@@ -1,4 +1,5 @@
 package org.shivangi.staffhub.dtos;
+import org.shivangi.staffhub.entities.RoleEnum; 
 
 public class RegisterUserDto {
     private String email;
@@ -6,6 +7,7 @@ public class RegisterUserDto {
     private String password;
 
     private String fullName;
+    private RoleEnum role;
 
     public String getFullName() {
 
@@ -44,6 +46,20 @@ public class RegisterUserDto {
     public RegisterUserDto setPassword(String password) {
 
         this.password = password;
+
+        return this;
+
+    }
+
+    public RoleEnum getRole() {
+
+        return role;
+
+    }
+
+    public RegisterUserDto setRole(RoleEnum role) {
+
+        this.role = role;
 
         return this;
 

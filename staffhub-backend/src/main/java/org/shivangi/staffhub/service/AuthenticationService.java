@@ -32,7 +32,7 @@ public class AuthenticationService {
     }
 
     public User signup(RegisterUserDto input) {
-        Optional<Role> optionalRole = roleRepository.findByName(RoleEnum.EMPLOYEE);
+        Optional<Role> optionalRole = roleRepository.findByName(input.getRole());
     
         if(optionalRole.isEmpty()){
             return null;

@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import org.shivangi.staffhub.dtos.TaskDto;
 import org.springframework.web.bind.annotation.PutMapping;
 
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
@@ -30,13 +31,11 @@ public class TaskController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<TaskDto> getTaskByUser(@PathVariable String userId) {
+    public List<Task> getTaskByUser(@PathVariable String userId) {
         Integer id = Integer.parseInt(userId);
         List<Task> tasks = taskRepo.findByUserId(id);
 
-         return tasks.stream()
-                     .map(task -> new TaskDto(task.getId(),task.getTaskName(),task.getDueDate(),task.getRemarks()))
-                     .toList();
+         return tasks;
     }
 
     @PostMapping("/add")
@@ -47,22 +46,39 @@ public class TaskController {
         return ResponseEntity.ok(taskDto);
     }
    
-    @PutMapping("update/{id}")
-    public String putMethodName(@PathVariable Long id, @RequestBody Task updatedTask) {
-        Task task = taskRepo.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
+    @PutMapping("/update/{id}")
+    public String putMethodName(@PathVariable String id, @RequestBody Task updatedTask) {
+        Long taskId = Long.valueOf(id);
+
+       
+        Task task = taskRepo.findById(taskId).orElseThrow(() -> new RuntimeException("Task not found"));
 
         task.setTaskName(updatedTask.getTaskName());
         task.setDueDate(updatedTask.getDueDate());
         task.setRemarks(updatedTask.getRemarks());
+        taskRepo.save(task);
         
         return "Task updated";
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
         public ResponseEntity<String> deleteTask(@PathVariable Long id)
        { 
         taskRepo.deleteById(id);
         return ResponseEntity.ok("Task deleted");
     }
+
+    @PutMapping("/complete/{id}") 
+        public ResponseEntity<String> completeTask(@PathVariable Long id)
+         {
+         Task task = taskRepo.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
+            
+         task.setCompleted(!task.isCompleted());  
+            taskRepo.save(task);
+
+                
+            return ResponseEntity.ok("Task completed");
+        }
+    
     
 }

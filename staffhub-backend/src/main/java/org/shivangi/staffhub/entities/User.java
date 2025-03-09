@@ -88,7 +88,7 @@ public class User implements UserDetails { // UserDetails is an interface which 
         return true; // this will return true if the user is enabled
     }
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name ="role_id",referencedColumnName = "id",nullable=false)
     private Role role;
 

@@ -52,14 +52,14 @@ public class SecurityConfiguration {
          CorsConfiguration configuration = new CorsConfiguration();
 
          configuration.setAllowedOrigins(List.of("http://localhost:3000")); // allow requests from this origin
-         configuration.setAllowedMethods(List.of("GET","POST"));
+         configuration.setAllowedMethods(List.of("GET","POST","PUT","DELETE"));
          configuration.setAllowedHeaders(List.of("authorization","content-Type","Cache-Control"));
 
          UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
          source.registerCorsConfiguration("/**",configuration);
 
-         return source;
+         return source; 
 
 
     }

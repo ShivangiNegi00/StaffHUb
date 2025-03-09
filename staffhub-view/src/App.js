@@ -3,7 +3,8 @@ import "./App.css";
 import{BrowserRouter as Router ,Routes,Route,Navigate} from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import TaskDashboard from "./components/TaskPage/TaskDashboard";
+import EmDashboard from "./components/EmDashboard";
+import MainDashboard from "./components/TaskPage/MainDashboard";
 
 const ProtectedRoute =({element,Component, ...rest}) => {
   const isAuthenticated = !!localStorage.getItem("token");
@@ -17,7 +18,8 @@ function App() {
 <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/TaskDashboard" element={<ProtectedRoute Component={TaskDashboard} />} />
+        <Route path="/MainDashboard" element={<ProtectedRoute Component={MainDashboard} />} />
+        <Route path="EmDashboard" element={<ProtectedRoute Component={EmDashboard} />} />
       </Routes>
         </Router>
 

@@ -26,6 +26,7 @@ public class Task {
     private Date dueDate;
 
     private String remarks;
+    @Column(nullable = false)
     private boolean completed;
 
     @ManyToOne(fetch = FetchType.LAZY)
