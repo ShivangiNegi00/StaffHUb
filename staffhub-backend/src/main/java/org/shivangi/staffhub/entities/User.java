@@ -5,6 +5,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 // import org.shivangi.staffhub.dtos.RegisterUserDto;
 import org.shivangi.staffhub.entities.Role;
+import org.shivangi.staffhub.entities.Employee;
+
 
 import java.util.Date;
 import java.util.List;
@@ -37,6 +39,9 @@ public class User implements UserDetails { // UserDetails is an interface which 
     @Column(nullable = false )
     private String fullName;
 
+    @Column(nullable = false,unique = true)
+    private String username;
+
     @Column(nullable = false)
     private String email;
 
@@ -58,15 +63,15 @@ public class User implements UserDetails { // UserDetails is an interface which 
         return List.of(authority); // this will return an empty list
     }
     
-    @Override
-    public String getPassword(){ // this will return the password of the user from the database
-        return password;
-    }
+    // @Override
+    // public String getPassword(){ // this will return the password of the user from the database
+    //     return password;
+    // }
 
-    @Override
-    public String getUsername(){
-        return email; // this will return the email of the user from the database 
-    }
+    // @Override
+    // public String getUsername(){
+    //     return email; // this will return the email of the user from the database 
+    // }
 
     @Override
     public boolean isAccountNonExpired(){
@@ -95,6 +100,9 @@ public class User implements UserDetails { // UserDetails is an interface which 
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
     
+    @OneToOne(mappedBy ="user",cascade = CascadeType.ALL)
+    private Employee employee;
+
     public  Role getRole(){
         return role;
     }
@@ -103,6 +111,11 @@ public class User implements UserDetails { // UserDetails is an interface which 
         this.role = role;
 
         return this;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.username;
     }
 
 

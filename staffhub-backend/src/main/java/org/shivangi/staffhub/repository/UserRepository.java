@@ -8,6 +8,8 @@ import java.util.Optional; //optional is used for null check
 @Repository
 
 public interface UserRepository extends CrudRepository<User,Integer> {
-    Optional<User> findByEmail(String email) ; 
+    Optional<User> findByEmail(String email) ;
+    Optional<User> findByUsername(String username) ;
+    boolean existsByUsername(String username) ; 
     
 }

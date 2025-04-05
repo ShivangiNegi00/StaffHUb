@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import EmployeeService from "../service/EmployeeService";
 
 const EmployeeTable = () => {
-  
+   
   const[loading, setLoading] = useState(true);
   const [employees, setEmployees] = useState(null);
 
