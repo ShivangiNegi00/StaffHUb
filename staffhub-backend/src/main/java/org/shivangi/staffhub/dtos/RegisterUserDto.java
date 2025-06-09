@@ -1,68 +1,30 @@
 package org.shivangi.staffhub.dtos;
 import org.shivangi.staffhub.entities.RoleEnum; 
 
+import org.shivangi.staffhub.entities.Employee;
+import org.shivangi.staffhub.entities.Role;
+import org.shivangi.staffhub.entities.User;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor 
+
 public class RegisterUserDto {
-    private String email;
+    // private Long id;
+     private String username;
+     private String email;
+     private String password;
+     private RoleEnum role;
 
-    private String password;
-
-    private String fullName;
-    private RoleEnum role;
-
-    public String getFullName() {
-
-        return fullName;
-
-    }
-
-    public RegisterUserDto setFullName(String fullName) {
-
-        this.fullName = fullName;
-
-        return this;
-
-    }
-
-    public String getEmail() {
-
-        return email;
-
-    }
-
-    public RegisterUserDto setEmail(String email) {
-
-        this.email = email;
-
-        return this;
-
-    }
-
-    public String getPassword() {
-
-        return password;
-
-    }
-
-    public RegisterUserDto setPassword(String password) {
-
-        this.password = password;
-
-        return this;
-
-    }
-
-    public RoleEnum getRole() {
-
-        return role;
-
-    }
-
-    public RegisterUserDto setRole(RoleEnum role) {
-
-        this.role = role;
-
-        return this;
-
+     //Employee Details
+     // private Long employeeId;
+     private String firstName;
+     private String lastName;
+     private String department;
+     private String designation;
     }
     
-}
+

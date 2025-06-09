@@ -31,22 +31,22 @@ public class AuthenticationService {
         this.roleRepository = roleRepository;
     }
 
-    public User signup(RegisterUserDto input) {
-        Optional<Role> optionalRole = roleRepository.findByName(input.getRole());
+    // public User signup(RegisterUserDto input) {
+    //     Optional<Role> optionalRole = roleRepository.findByName(input.getRole());
     
-        if(optionalRole.isEmpty()){
-            return null;
-        }
-        User user = new User();
+    //     if(optionalRole.isEmpty()){
+    //         return null;
+    //     }
+    //     User user = new User();
         
-        user.setEmail(input.getEmail());
-        user.setPassword(passwordEncoder.encode(input.getPassword()));
-        user.setFullName(input.getFullName());
-        user.setRole(optionalRole.get());
+    //     user.setEmail(input.getEmail());
+    //     user.setPassword(passwordEncoder.encode(input.getPassword()));
+    //     user.setFullName(input.getFullName());
+    //     user.setRole(optionalRole.get());
         
-       return  userRepository.save(user);
+    //    return  userRepository.save(user);
     
-    }
+    // }
 
     public User authenticate(LoginUserDto input){
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(input.getEmail(), input.getPassword()));

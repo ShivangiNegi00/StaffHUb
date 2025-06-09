@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository; //repository is used to store 
 import java.util.Optional; //optional is used for null check
 @Repository
 
-public interface UserRepository extends CrudRepository<User,Integer> {
+public interface UserRepository extends CrudRepository<User,Long> {
     Optional<User> findByEmail(String email) ;
     Optional<User> findByUsername(String username) ;
     boolean existsByUsername(String username) ; 

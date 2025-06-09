@@ -29,15 +29,11 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-
 public class User implements UserDetails { // UserDetails is an interface which is implemented by User class
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false) // this column cannot be null applied on id
-    private Integer id;
-
-    @Column(nullable = false )
-    private String fullName;
+    private Long id;
 
     @Column(nullable = false,unique = true)
     private String username;
@@ -63,15 +59,15 @@ public class User implements UserDetails { // UserDetails is an interface which 
         return List.of(authority); // this will return an empty list
     }
     
-    // @Override
-    // public String getPassword(){ // this will return the password of the user from the database
-    //     return password;
-    // }
+    @Override
+    public String getPassword(){ // this will return the password of the user from the database
+        return password;
+    }
 
-    // @Override
-    // public String getUsername(){
-    //     return email; // this will return the email of the user from the database 
-    // }
+    @Override
+    public String getUsername(){
+        return email; // this will return the email of the user from the database 
+    }
 
     @Override
     public boolean isAccountNonExpired(){
@@ -113,10 +109,6 @@ public class User implements UserDetails { // UserDetails is an interface which 
         return this;
     }
 
-    @Override
-    public String getUsername() {
-        return this.username;
-    }
 
 
 }

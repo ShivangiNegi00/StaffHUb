@@ -14,7 +14,7 @@ public class LoginResponse {
 
     private String token;
     private long expiresIn;
-    private Integer userId;
+    private Long userId;
 
 
     public LoginResponse setToken(String token) {
@@ -27,7 +27,7 @@ public class LoginResponse {
         return this;
     }
 
-    public LoginResponse setUserId(Integer userId) {
+    public LoginResponse setUserId(Long userId) {
         this.userId = userId;
         return this;
     }

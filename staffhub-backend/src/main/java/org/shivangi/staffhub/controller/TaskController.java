@@ -73,7 +73,7 @@ public class TaskController {
          {
          Task task = taskRepo.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
             
-         task.setCompleted(!task.isCompleted());  
+         task.setCompleted(!task.isCompleted());
             taskRepo.save(task);
 
                 
