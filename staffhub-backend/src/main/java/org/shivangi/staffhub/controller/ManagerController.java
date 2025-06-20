@@ -14,7 +14,7 @@ import org.shivangi.staffhub.service.UserEmployeeService;
 import org.shivangi.staffhub.dtos.RegisterUserDto;
 
 
-@RequestMapping("/manager")
+@RequestMapping("/manager") 
 @RestController
 
 public class ManagerController {
